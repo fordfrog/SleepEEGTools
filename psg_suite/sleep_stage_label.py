@@ -188,16 +188,18 @@ class SleepStageLabel():
         tableax = plt.axes([0.2, 0.0, 0.25, 0.16], facecolor='lightblue')
         tableax.get_yaxis().set_visible(False)
         table = Table(tableax, bbox=[0,0,1,1])
-        height = table._approx_text_height()
+        table.auto_set_font_size(False)
+        fontsize = 34
+        table.set_fontsize(fontsize)
         lidx = 0
         for label in sleep_stage_labels[::-1]:
-            table.add_cell(lidx, 0, width=0.6, height=height, text=label)
-            table.add_cell(lidx, 1, width=0.4, height=height, text='')
-            table.add_cell(lidx, 2, width=0.4, height=height, text='')
+            table.add_cell(lidx, 0, width=0.6, height=fontsize, text=label)
+            table.add_cell(lidx, 1, width=0.4, height=fontsize, text='')
+            table.add_cell(lidx, 2, width=0.4, height=fontsize, text='')
             lidx = lidx + 1
-        table.add_cell(lidx, 0, width=0.6, height=height, text='Total Sleep Time')
-        table.add_cell(lidx, 1, width=0.4, height=height, text='')
-        table.add_cell(lidx, 2, width=0.4, height=height, text='100 %')
+        table.add_cell(lidx, 0, width=0.6, height=fontsize, text='Total Sleep Time')
+        table.add_cell(lidx, 1, width=0.4, height=fontsize, text='')
+        table.add_cell(lidx, 2, width=0.4, height=fontsize, text='100 %')
         tableax.add_table(table)
         
         fig.canvas.callbacks.connect('pick_event', on_pick)
